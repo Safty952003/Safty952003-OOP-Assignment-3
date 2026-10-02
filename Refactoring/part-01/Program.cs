@@ -2,7 +2,9 @@
 
 var aramex = new ShippingCostCalculator(new AramexCarrier());
 var fedEx = new ShippingCostCalculator(new FedExCarrier());
+var bosta = new ShippingCostCalculator(new BostaCarrier());
 
+Console.WriteLine($"Bosta 2kg → {bosta.Calculate(2)}");
 Console.WriteLine($"Aramex 2kg → {aramex.Calculate(2)}");
 Console.WriteLine($"FedEx 2kg  → {fedEx.Calculate(2)}");
 Console.WriteLine();

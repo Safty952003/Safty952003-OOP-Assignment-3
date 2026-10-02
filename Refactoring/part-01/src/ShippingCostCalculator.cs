@@ -42,3 +42,10 @@ public class DHLCarrier : IShippingCarrier
         return weightKg * 18m;
     }
 }
+public class BostaCarrier : IShippingCarrier
+{
+    public decimal CalculateCost(decimal weightKg)
+    {
+        return weightKg * 10m;
+    }
+}
