@@ -17,7 +17,30 @@ var processor = new OrderProcessor(repo, email);
 processor.Process(1001, "customer@example.com");
 Console.WriteLine();
 
-new UrgentScheduledEmailNotification { SendAt = DateTime.Today.AddHours(18) }
-    .Send("customer@example.com", "Your order ships tomorrow");
-new UrgentSmsNotification()
-    .Send("+201000000000", "OTP 4821");
+var mail = new Notification(
+    new EmailChannel());
+
+mail.Send(
+    "customer@example.com",
+    "Your order is confirmed");
+
+Console.WriteLine();
+
+var urgentSms = new Notification(
+    new SmsChannel(),
+    new UrgentBehavior());
+
+urgentSms.Send(
+    "01012345678",
+    "Your order is confirmed");
+
+Console.WriteLine();
+
+var urgentScheduledEmail = new Notification(
+    new EmailChannel(),
+    new UrgentBehavior(),
+    new ScheduledBehavior(DateTime.Now.AddHours(2)));
+
+urgentScheduledEmail.Send(
+    "customer@example.com",
+    "Your order is confirmed");
