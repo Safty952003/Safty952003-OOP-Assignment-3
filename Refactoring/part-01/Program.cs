@@ -44,3 +44,12 @@ var urgentScheduledEmail = new Notification(
 urgentScheduledEmail.Send(
     "customer@example.com",
     "Your order is confirmed");
+
+var urgentScheduledPush = new Notification(
+    new PushChannel(),
+    new UrgentBehavior(),
+    new ScheduledBehavior(DateTime.Now.AddHours(2)));
+
+urgentScheduledPush.Send(
+    "user123",
+    "Your order is confirmed");

@@ -20,6 +20,13 @@ public class SmsChannel : INotificationChannel
         Console.WriteLine($"[sms] {to}: {message}");
     }
 }
+public class PushChannel : INotificationChannel
+{
+    public void Send(string to, string message)
+    {
+        Console.WriteLine($"[push] {to}: {message}");
+    }
+}
 
 public interface INotificationBehavior
 {
