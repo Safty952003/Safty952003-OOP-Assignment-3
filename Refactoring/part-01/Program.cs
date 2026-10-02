@@ -9,7 +9,11 @@ Console.WriteLine($"Aramex 2kg → {aramex.Calculate(2)}");
 Console.WriteLine($"FedEx 2kg  → {fedEx.Calculate(2)}");
 Console.WriteLine();
 
-var processor = new OrderProcessor();
+var repo = new SqlOrderRepository();
+var email = new SmtpEmailSender();
+
+var processor = new OrderProcessor(repo, email);
+
 processor.Process(1001, "customer@example.com");
 Console.WriteLine();
 
