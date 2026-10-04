@@ -16,12 +16,6 @@ var studentId = "S100";
 var courseId = "CS201";
 var amount = 1500m;
 
-var payment = new PaymentGateway();
-var seats = new SeatInventory();
-var invoices = new InvoiceGenerator();
-var email = new EmailService();
+var enrollment = new EnrollmentFacade();
 
-payment.Charge(studentId, amount);
-seats.Reserve(courseId, studentId);
-var invoiceId = invoices.Create(studentId, amount);
-email.Send(studentId, "Enrollment confirmed", $"Invoice {invoiceId} for {courseId}");
+enrollment.Enroll(studentId, courseId, amount);
