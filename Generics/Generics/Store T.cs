@@ -25,9 +25,12 @@ public class Store<T> where T : IHasId
         return default;
     }
 
-    public IReadOnlyDictionary<int, T> GetAll()
+    public IEnumerable<T> GetAll()
     {
-        return items;
+        foreach (T item in items.Values)
+        {
+            yield return item;
+        }
     }
 
     public void Remove(int id)
