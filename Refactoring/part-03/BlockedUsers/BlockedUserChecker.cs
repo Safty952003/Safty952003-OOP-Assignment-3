@@ -6,13 +6,17 @@ public static class BlockedUserChecker
 {
     public static int CountBlocked(List<int> blockedIds, int[] requestIds)
     {
-        var blocked = 0;
+        var blocked = new HashSet<int>(blockedIds);
+
+        var count = 0;
+
         foreach (var id in requestIds)
         {
-            if (blockedIds.Contains(id))
-                blocked++;
+            if (blocked.Contains(id))
+                count++;
         }
-        return blocked;
+
+        return count;
     }
 
     public static List<int> BuildBlockedIds(int count)
